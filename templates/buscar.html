@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/main.css">
+    <title>Biblioteca</title>
+    <style>
+        /* Estiliza la barra de búsqueda y los resultados */
+        #busqueda {
+            width: 300px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        button {
+            padding: 10px;
+        }
+        #resultados div {
+            margin-top: 10px;
+        }
+
+        
+    </style>
+    <script>
+        function buscarLibros() {
+            const query = document.getElementById('busqueda').value;
+            fetch(`/buscar?q=${query}`)
+                .then(response => response.json())
+                .then(data => {
+                    const resultadosDiv = document.getElementById('resultados');
+                    resultadosDiv.innerHTML = '';
+                    if (data.error) {
+                        resultadosDiv.textContent = data.error;
+                    } else {
+                        data.forEach(libro => {
+                            const libroDiv = document.createElement('div');
+                            libroDiv.textContent = `${libro.titulo} - ${libro.autor} (${libro.categoria})`;
+                            resultadosDiv.appendChild(libroDiv);
+                        });
+                    }
+                });
+        }
+    </script>
+</head>
+<body>
+    <h1>Biblioteca</h1>
+    <input type="text" id="busqueda" placeholder="Buscar libros...">
+    <button onclick="buscarLibros()">Buscar</button>
+    <div id="resultados"></div>
+</body>
+</html>

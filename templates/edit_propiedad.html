@@ -1,0 +1,35 @@
+<!-- edit_propiedad.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Propiedad</title>
+    <link rel="stylesheet" href="/static/css/main.css">
+</head>
+<body>
+    <h1>Editar Propiedad</h1>
+    <form action="{{ url_for('edit_propiedad', id=propiedad.id) }}" method="POST">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" value="{{ propiedad.nombre }}" required><br><br>
+        
+        <label for="direccion">Dirección:</label>
+        <input type="text" id="direccion" name="direccion" value="{{ propiedad.direccion }}" required><br><br>
+        
+        <label for="descripcion">Descripción:</label><br>
+        <textarea id="descripcion" name="descripcion" rows="4" cols="50">{{ propiedad.descripcion }}</textarea><br><br>
+        
+        <label for="precio">Precio:</label>
+        <input type="number" id="precio" name="precio" value="{{ propiedad.precio }}" step="0.01" required><br><br>
+        
+        <label for="tipo">Tipo:</label>
+        <select id="tipo" name="tipo" required>
+            <option value="Venta" {% if propiedad.tipo == 'Venta' %} selected {% endif %}>Venta</option>
+            <option value="Alquiler" {% if propiedad.tipo == 'Alquiler' %} selected {% endif %}>Alquiler</option>
+        </select><br><br>
+        
+        <button type="submit">Guardar Cambios</button>
+    </form>
+</body>
+</html>

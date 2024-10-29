@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/main.css">
+    <title>Añadir Libro</title>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Añadir Libro</h1>
+            <nav>
+                <a href="/registro">Registro</a>
+                <a href="/login">Iniciar Sesión</a>
+            </nav>
+        </div>
+    </header>
+    <div class="container">
+        <aside>
+            <h2>Menú</h2>
+            <ul>
+                <li><a href="/">Inicio</a></li>
+                <li><a href="/books">Libros</a></li>
+                <li><a href="/perfil">Perfil</a></li>
+                <li><a href="/propiedades">Propiedades</a></li>
+                <li><a href="/cursos">Cursos</a></li>
+            </ul>
+        </aside>
+        <main>
+            <h2>Añadir Libro</h2>
+            <form action="{{ url_for('add_book') }}" method="POST" action="/books/add" enctype="multipart/form-data">
+                <label for="titulo">Título:</label>
+                <input type="text" id="titulo" name="titulo" required>
+                <label for="autor">Autor:</label>
+                <input type="text" id="autor" name="autor" required>
+                <label for="descripcion">Descripción:</label>
+                <textarea id="descripcion" name="descripcion"></textarea>
+                <label for="pdf">PDF:</label>
+                <input type="file" id="pdf" name="pdf" accept=".pdf" required>
+                <label for="categoria">Categoría:</label>
+                <select id="categoria" name="categoria">
+                    <option value="Fantasía">Fantasía</option>
+                    <option value="Ciencia Ficción">Ciencia Ficción</option>
+                    <option value="Romance">Romance</option>
+                    <option value="Misterio y suspenso">Misterio y suspenso</option>
+                    <option value="Novela">Novela</option>
+                    <option value="Cuentos">Cuento</option>
+                    <option value="Ficción">Ficción</option>
+                    <option value="Terror">Terror</option>
+                    <option value="Biografías">Biografías</option>
+                    <option value="Historia">Historia</option>
+                    <option value="Filosofía">Filosofía</option>
+                    <option value="Autoayuda y desarrollo personal">Autoayuda y desarrollo personal</option>
+                    <option value="Negocio y economía">Negocio y economía</option>
+                    <option value="Tecnología">Tecnología</option>
+                    <option value="Novela Juvenil">Novela Juvenil</option>
+                    <option value="Poesías">Poesías</option>
+                    <option value="Manga">Manga</option>
+                    <option value="Comics">Comics</option>
+                    <option value="Novela gráfica">Novela gráfica</option>
+                    <option value="Recetarios">Recetarios</option>
+                    <option value="Gastronomía">Gastronomía</option>
+                    <option value="Nutrición">Nutrición</option>
+                    <option value="Ejercicio y fitness">Ejercicio y fitness</option>
+                    <option value="Medicina">Medicina</option>
+                    <!-- Añade más opciones según las categorías que tengas -->
+                </select>
+                <label for="imagen">Imagen del Libro:</label>
+                <input type="file" name="imagen" id="imagen">
+                <button type="submit">Agregar Libro</button>
+            </form>
+        </main>
+    </div>
+    <footer>
+        <p>© 2024 Sistema de Gestión de Biblioteca</p>
+    </footer>
+</body>
+</html>

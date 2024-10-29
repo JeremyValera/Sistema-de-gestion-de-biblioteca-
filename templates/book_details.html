@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <title>Detalles del Libro</title>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Detalles del Libro</h1>
+            <nav>
+                <a href="/register">Registro</a>
+                <a href="/login">Iniciar Sesión</a>
+            </nav>
+        </div>
+    </header>
+    <div class="container">
+        <aside>
+            <h2>Menú</h2>
+            <ul>
+                <li><a href="/">Inicio</a></li>
+                <li><a href="/books">Libros</a></li>
+                <li><a href="/perfil">Perfil</a></li>
+                <li><a href="/propiedades">Propiedades</a></li>
+            </ul>
+        </aside>
+        <main>
+            <h2>Detalles del Libro</h2>
+            <div class="book-details">
+                <h3>{{ libro.titulo }}</h3>
+                <p>Autor: {{ libro.autor }}</p>
+                <p>Descripción: {{ libro.descripcion }}</p>
+                <p>Categoría: {{ libro.categoria }}</p>
+                {% if libro.imagen_path %}
+                    <img src="{{ url_for('static', filename=libro.imagen_path.replace('\\', '/')) }}" alt="{{ libro.titulo }}" style="max-width: 300px;">
+                {% else %}
+                    <p><i>Imagen no disponible</i></p>
+                {% endif %}
+                {% if libro.pdf_path %}
+                    <p><a href="{{ libro.pdf_path }}" target="_blank">Descargar PDF</a></p>
+                {% endif %}
+                <p><a href="{{ url_for('edit_book', idbook=libro.idbook) }}">Editar</a></p>
+                <p><a href="{{ url_for('delete_book', idbook=libro.idbook) }}" onclick="return confirm('¿Estás seguro de que deseas eliminar este libro?');">Eliminar</a></p>
+            </div>
+
+            {% if current_user.is_authenticated %}
+                {% if libro.idbook in favoritos_ids %}
+                    <form action="{{ url_for('remove_favorite', idbook=libro.idbook) }}" method="POST">
+                        <button type="submit">Eliminar de Favoritos</button>
+                    </form>
+                {% else %}
+                    <form action="{{ url_for('add_favorite', idbook=libro.idbook) }}" method="POST">
+                        <button type="submit">Añadir a Favoritos</button>
+                    </form>
+                {% endif %}
+            {% endif %}
+
+          
+            </form>
+            <a href="{{ url_for('books') }}">Volver al Listado de Libros</a>
+        </main>
+    </div>
+    <footer>
+        <p>© 2024 Sistema de Gestión de Biblioteca</p>
+    </footer>
+</body>
+</html>

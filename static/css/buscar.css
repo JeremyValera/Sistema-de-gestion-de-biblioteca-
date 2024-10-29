@@ -1,0 +1,95 @@
+/* Estilos generales */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    display: flex;
+    flex: 1;
+    flex-direction: row; /* Cambiado a fila */
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+/* Estilos del encabezado */
+header {
+    background: #003e4f;
+    color: #fff;
+    padding: 05px 10px;
+    text-align: center;
+    justify-content: space-between; /* Añadido */
+}
+
+/* Nuevos estilos para los enlaces de registro e inicio de sesión */
+header nav {
+    display: flex; /* Añadido */
+    gap: 20px; /* Añadido */
+    margin-left: 90%;
+    border: px red
+}
+
+header nav a {
+    color: #fff;
+    text-decoration: none;
+    background: #24303c;
+}
+
+header nav a:hover {
+    text-decoration: underline;
+}
+
+/* Estilos de la barra lateral */
+aside {
+    background: #24303c;
+    color: #fff;
+    padding: 10px;
+    flex: 0 0 180px; /* Ancho fijo para el aside */
+}
+
+aside h2 {
+    margin-top: 0;
+    color: #fff;
+}
+
+aside ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+aside ul li {
+    margin-bottom: 30px;
+}
+
+aside ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+aside ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Estilos del contenido principal */
+main {
+    flex: 1;
+    background-color: #fff;
+    padding: 20px;
+}
+
+.widget {
+    background-color: #e7e7e7;
+    padding: 1em;
+    margin-bottom: 1em;
+}
+
+/* Estilos del pie de página */
+footer {
+    background: #003e4f;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+}

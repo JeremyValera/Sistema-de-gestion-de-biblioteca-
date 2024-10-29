@@ -1,0 +1,12 @@
+/* static/css/galeria.css */
+
+.galeria {
+    display: flex;
+    overflow-x: auto; /* Permite desplazamiento horizontal si hay muchas imágenes */
+}
+
+.galeria img {
+    width: 150px; /* Ajusta el tamaño de las imágenes según sea necesario */
+    height: auto;
+    margin-right: 10px; /* Espacio entre imágenes */
+}

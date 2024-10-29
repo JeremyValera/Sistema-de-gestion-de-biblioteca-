@@ -1,0 +1,18 @@
+body {
+    background-color: #f8f9fa; /* Fondo gris claro */
+}
+
+h1 {
+    color: #343a40; /* Color del texto del título */
+}
+
+.list-group-item {
+    background-color: #fff; /* Fondo blanco para los ítems de la lista */
+    border: 1px solid #dee2e6; /* Borde gris claro */
+    margin-bottom: 10px; /* Espacio entre ítems */
+}
+
+.list-group-item h5 {
+    margin-bottom: 5px; /* Espacio debajo del título */
+}
+

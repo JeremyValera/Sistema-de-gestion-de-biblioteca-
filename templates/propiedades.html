@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/main.css">
+    <link rel="stylesheet" href="/static/css/galeria.css">
+    <title>Propiedades</title>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>propiedades</h1>
+            <nav>
+                <a href="/register">Registro</a>
+                <a href="/login">Iniciar Sesión</a>
+            </nav>
+        </div>
+        <div class="search-bar-container">
+            <form action="{{ url_for('buscar_propiedades') }}" method="get" class="search-bar">
+                <input type="text" name="q" placeholder="Buscar propiedades...">
+                <button type="submit">Buscar</button>
+            </form>
+        </div>
+    </header>
+    <div class="container">
+        <aside>
+            <h2>Menú</h2>
+            <ul>
+                <li><a href="/">Inicio</a></li>
+                <li><a href="/books">Libros</a></li>
+                <li><a href="/perfil">Perfil</a></li>
+            </ul>
+        </aside>
+       <main>
+    <h2>Lista de Propiedades</h2>
+    <a href="/propiedades/add">Añadir Propiedad</a>
+    <div class="propiedades-list">
+        {% if propiedades %}
+            <ul>
+                {% for propiedad in propiedades %}
+                    <li>
+                        <h3>{{ propiedad.nombre }}</h3>
+                        <p>{{ propiedad.direccion }}</p>
+                        <p>{{ propiedad.descripcion }}</p>
+                        <p>{{ propiedad.precio }}</p>
+                        <p>{{ propiedad.tipo }}</p>
+                        {% if propiedad.imagenes %}
+                            <div class="galeria">
+                                {% for imagen in propiedad.imagenes %}
+                                    <p>{{ url_for('static', filename='uploads/' + imagen.ruta) }}</p>
+                                    <img src="{{ url_for('static', filename='uploads/' + imagen.ruta) }}" alt="Imagen de {{ propiedad.nombre }}">
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            <p>No hay imágenes disponibles</p>
+                        {% endif %}
+                        <!-- Usar los nombres correctos de las rutas aquí -->
+                        <a href="{{ url_for('edit_propiedad', id=propiedad.id) }}">Editar</a>
+                        <form action="{{ url_for('delete_propiedad', id=propiedad.id) }}" method="post" style="display:inline;">
+                            <button type="submit" onclick="return confirm('¿Estás seguro de que deseas eliminar esta propiedad?');">Eliminar</button>
+                        </form>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No se encontraron propiedades.</p>
+        {% endif %}
+    </div>
+</main>
+    </div>
+    <footer>
+        <p>© 2024 Sistema de Gestión de Biblioteca</p>
+    </footer>
+</body>
+</html>

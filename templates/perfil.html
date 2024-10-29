@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/main.css">
+    <title>Perfil - Sistema de Gestión de Biblioteca</title>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Sistema de Gestión de Biblioteca</h1>
+            <nav>
+                <a href="/registro">Registro</a>
+                <a href="/login">Iniciar Sesión</a>
+                {% if current_user.is_authenticated %}
+                    <a href="/logout">Cerrar Sesión</a>
+                {% endif %}
+            </nav>
+        </div>
+    </header>
+    <div class="container">
+        <aside>
+            <h2>Menú</h2>
+            <ul>
+                <li><a href="/">Inicio</a></li>
+                <li><a href="/books">Libros</a></li>
+                <li><a href="/propiedades">Propiedades</a></li>
+                <li><a href="/perfil">Perfil</a></li>
+            </ul>
+        </aside>
+        <main>
+            <h2>Mi Perfil</h2>
+            <form method="POST">
+                <div class="form-group">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" name="nombre" value="{{ usuario.nombre }}" required>
+                </div>
+                <div class="form-group">
+                    <label for="apellido">Apellido:</label>
+                    <input type="text" id="apellido" name="apellido" value="{{ usuario.apellido }}" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" value="{{ usuario.email }}" required>
+                </div>
+                <h2>Favoritos</h2>
+<ul>
+    {% for favorito in favoritos %}
+    <li>
+        <a href="{{ url_for('detalle_libro', libro_id=favorito.libro.id) }}">
+            {{ favorito.libro.titulo }}
+        </a>
+    </li>
+    {% endfor %}
+</ul>
+
+                <button type="submit">Guardar Cambios</button>
+            </form>
+        </main>
+    </div>
+    <footer>
+        <p>© 2024 Sistema de Gestión de Biblioteca</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/main.css">
+    <title>Templo del Sabio</title>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Templo del Sabio</h1>
+            <nav>
+                <a href="/register">Registro</a>
+                <a href="/login">Iniciar Sesión</a>
+            </nav>
+        </div>
+        <!-- Barra de búsqueda -->
+        <div class="search-bar-container">
+            <form action="{{ url_for('buscar') }}" method="get" class="search-bar">
+                <input type="text" name="q" placeholder="Buscar libros...">
+                <button type="submit">Buscar</button>
+            </form>
+        </div>
+    </header>
+
+    <!-- Resultados de la búsqueda -->
+    <div id="resultados">
+        {% if libros %}
+            <ul>
+                {% for libro in libros %}
+                    <li>{{ libro.titulo }} - {{ libro.autor }} ({{ libro.categoria }})</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+        {% endif %}
+    </div>
+
+    <div class="container">
+        <aside>
+            <h2>Menú</h2>
+            <ul>
+                <li><a href="/books">Libros</a></li>
+                <li><a href="/perfil">Perfil</a></li>
+                <li><a href="/propiedades">Propiedades</a></li>
+            </ul>
+        </aside>
+        <main>
+            <div class="widget">
+                <h2>Libros destacados</h2>
+                <div class="imagenes" ><a href="/books">
+                    <img src="static/uploads/hp.jpg" alt="static/uploads/hp.jpg" class="imagenes">
+                    <img src="static/uploads/61d71RHb8JL._AC_UF1000,1000_QL80_ (1).jpg" alt=""class="imagenes">
+                    <img src="static/uploads/portada-padre-rico-padre-pobre-1.jpg" alt="" class="imagenes">
+                    <img src="static/uploads/EL-TUNEL-PORTADA.jpg" alt="static/uploads/EL-TUNEL-PORTADA.jpg" class="imagenes"></a>
+                </div>    
+            </div>
+            <div class="widget">
+                <h2>Propiedades</h2>
+                <div class="imagenes" ><a href="/propiedades">
+                 <img src="/static/uploads/aptmain.jpg" alt="static/uploads/aptmain.jpg" class="imagenes"></a>
+                </div>
+            </div>
+            <article class="bubalu">
+                <a href="http://127.0.0.1:5000/books/1" style="color: white;" ><p>Últimas Noticias</p></a>
+            </article>
+        </main>
+    </div>
+    <footer>
+        <p>© 2024 Sistema de Gestión de Biblioteca</p>
+    </footer>
+</body>
+</html>

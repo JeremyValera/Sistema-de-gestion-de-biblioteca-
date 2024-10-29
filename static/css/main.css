@@ -1,0 +1,205 @@
+/* Estilos generales */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+
+}
+
+.container {
+    display: flex;
+    flex: 1;
+    flex-direction: row; /* Cambiado a fila */
+    padding-top: 2px;
+    padding-bottom: 2px;
+    font-size: large;
+}
+
+/* Estilos del encabezado */
+header {
+    background: #003e4f;
+    color: #fff;
+    padding: 05px 10px;
+    text-align: center;
+    justify-content: space-between; /* Añadido */
+    padding-bottom: 2.5px;
+    font-size: smaller;
+    font-family: 'workforce_combine';
+}
+
+/* Nuevos estilos para los enlaces de registro e inicio de sesión */
+header nav {
+    display: flex; /* Añadido */
+    gap: 20px; /* Añadido */
+    margin-left: 90%;
+    border: 12px red;
+    font-size: large;
+}
+
+header nav a {
+    color: #fff;
+    text-decoration: none;
+
+}
+
+header nav a:hover {
+    text-decoration: underline;
+}
+
+/* Estilos de la barra lateral */
+aside {
+    background: #24303c;
+    color: #fff;
+    padding: 10px;
+    flex: 0 0 130px; /* Ancho fijo para el aside */
+    text-align: justify;
+}
+
+aside h2 {
+    margin-top: 0;
+    color: #fff;
+}
+
+aside ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+aside ul li {
+    margin-bottom: 30px;
+}
+
+aside ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+aside ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Estilos del contenido principal */
+main {
+    flex: 1;
+    background-color: #fff;
+    padding: 20px;
+}
+
+.widget {
+    background-color: #e7e7e7;
+    padding: 1em;
+    margin-bottom: 1em;
+    display:block;
+}
+
+/* Estilos del pie de página */
+footer {
+    background: #003e4f;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.search-bar-container {
+    position: absolute;
+    top: 55px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.search-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-bar input[type="text"] {
+    padding: 5px;
+    font-size: 16px;
+}
+
+.search-bar button {
+    padding: 5px 10px;
+    font-size: 16px;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+/* Añadir estilos para las propiedades */
+
+.propiedades-list ul {
+    list-style: none;
+    padding: 0;
+}
+
+.propiedades-list li {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.propiedades-list li img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin-top: 10px;
+}
+
+/* Estilos para los enlaces de editar y eliminar */
+.propiedad-actions {
+    margin-top: 10px;
+}
+
+.propiedad-actions a {
+    color: #007bff;
+    text-decoration: none;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.propiedad-actions a:hover {
+    text-decoration: underline;
+}
+
+/* Estilo para la confirmación de eliminación */
+.propiedad-actions a.delete-link {
+    color: #dc3545;
+}
+
+.propiedad-actions a.delete-link:hover {
+    text-decoration: none;
+    color: #dc3545;
+}
+
+.hp {
+    width: 220px; height: 250px;  
+    
+}
+
+.imageninvertir {
+    width: 220px; height: 250px; 
+}
+
+.imagenes {
+    display: inline;
+    width: 220px; height: 250px; 
+    list-style-type: none;
+    padding: 0;
+    flex-wrap: wrap;
+                margin: 15px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            width: 200px;
+            text-align: center;
+}
+
+.descripcion {
+    width: 250px, 50px, 50px;
+    box-sizing: 15%;
+}
+
+.bubalu {
+    color: white;
+}

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/main.css">
+    <title>Editar Libro</title>
+</head>
+<body>
+    <h1>Editar Libro</h1>
+    <form action="{{ url_for('edit_book', idbook=book.idbook) }}" method="post" enctype="multipart/form-data">
+        <label for="titulo">Título:</label>
+        <input type="text" id="titulo" name="titulo" value="{{ book.titulo }}" required>
+        <label for="autor">Autor:</label>
+        <input type="text" id="autor" name="autor" value="{{ book.autor }}" required>
+        <label for="descripcion">Descripción:</label>
+        <textarea id="descripcion" name="descripcion">{{ book.descripcion }}</textarea>
+        <label for="categoria">Categoría:</label>
+        <select id="categoria" name="categoria">
+            <option value="Fantasía" {% if book.categoria == 'Fantasía' %}selected{% endif %}>Fantasía</option>
+            <option value="Ciencia Ficción" {% if book.categoria == 'Ciencia Ficción' %}selected{% endif %}>Ciencia Ficción</option>
+            <option value="Romance" {% if book.categoria == 'Romance' %}selected{% endif %}>Romance</option>
+            <option value="Misterio y suspenso" {% if book.categoria == 'Misterio y suspenso' %}selected{% endif %}>Misterio y suspenso</option>
+            <option value="Novela" {% if book.categoria == 'Novela' %}selected{% endif %}>Novela</option>
+            <option value="Cuentos" {% if book.categoria == 'Cuentos' %}selected{% endif %}>Cuentos</option>
+            <option value="Ficción" {% if book.categoria == 'Ficción' %}selected{% endif %}>Ficción</option>
+            <option value="Terror" {% if book.categoria == 'Terror' %}selected{% endif %}>Terror</option>
+            <option value="Biografías" {% if book.categoria == 'Biografías' %}selected{% endif %}>Biografías</option>
+            <option value="Historia" {% if book.categoria == 'Historia' %}selected{% endif %}>Historia</option>
+            <option value="Filosofía" {% if book.categoria == 'Filosofía' %}selected{% endif %}>Filosofía</option>
+            <option value="Autoayuda y desarrollo personal" {% if book.categoria == 'Autoayuda y desarrollo personal' %}selected{% endif %}>Autoayuda y desarrollo personal</option>
+            <option value="Negocio y economía" {% if book.categoria == 'Negocio y economía' %}selected{% endif %}>Negocio y economía</option>
+            <option value="Tecnología" {% if book.categoria == 'Tecnología' %}selected{% endif %}>Tecnología</option>
+            <option value="Novela Juvenil" {% if book.categoria == 'Novela Juvenil' %}selected{% endif %}>Novela Juvenil</option>
+            <option value="Poesías" {% if book.categoria == 'Poesías' %}selected{% endif %}>Poesías</option>
+            <option value="Manga" {% if book.categoria == 'Manga' %}selected{% endif %}>Manga</option>
+            <option value="Comics" {% if book.categoria == 'Comics' %}selected{% endif %}>Comics</option>
+            <option value="Novela gráfica" {% if book.categoria == 'Novela gráfica' %}selected{% endif %}>Novela gráfica</option>
+            <option value="Recetarios" {% if book.categoria == 'Recetarios' %}selected{% endif %}>Recetarios</option>
+            <option value="Gastronomía" {% if book.categoria == 'Gastronomía' %}selected{% endif %}>Gastronomía</option>
+            <option value="Nutrición" {% if book.categoria == 'Nutrición' %}selected{% endif %}>Nutrición</option>
+            <option value="Ejercicio y fitness" {% if book.categoria == 'Ejercicio y fitness' %}selected{% endif %}>Ejercicio y fitness</option>
+            <option value="Medicina" {% if book.categoria == 'Medicina' %}selected{% endif %}>Medicina</option>
+        </select>
+        <label for="imagen">Imagen del Libro:</label>
+        <input type="file" name="imagen" id="imagen">
+        <button type="submit">Guardar Cambios</button>
+        <button type="submit">Actualizar Libro</button>
+    </form>
+</body>
+</html>

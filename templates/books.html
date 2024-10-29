@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/main.css">
+    <title>Listado de Libros - Sistema de Gestión de Biblioteca</title>
+    <style>
+        .book-list {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .book-item {
+            margin: 15px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            width: 200px;
+            text-align: center;
+        }
+        .book-item img {
+            max-width: 100%;
+            height: auto;
+        }
+        .book-item p {
+            margin: 5px 0;
+        }
+        .book-item .admin-actions {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Libros</h1>
+            <nav>
+                <a href="/register">Registro</a>
+                <a href="/login">Iniciar Sesión</a>
+            </nav>
+        </div>
+    </header>
+    <div class="container">
+        <aside>
+            <h2>Menú</h2>
+            <ul>
+                <li><a href="/">Inicio</a></li>
+                <li><a href="/perfil">Perfil</a></li>
+                <li><a href="/propiedades">Propiedades</a></li>
+            </ul>
+        </aside>
+        <main>
+            <h2>Listado de Libros</h2>
+            <a href="/books/add">Añadir Libro</a>
+            <ul class="book-list">
+                {% for libro in libros %}
+                    <li class="book-item">
+                        <a href="{{ url_for('book_details', idbook=libro.idbook) }}">
+                            {% if libro.imagen_path and (libro.imagen_path.endswith('.jpg') or libro.imagen_path.endswith('.jpeg') or libro.imagen_path.endswith('.png') or libro.imagen_path.endswith('.gif')) %}
+                                <img src="{{ url_for('static', filename=libro.imagen_path.replace('\\', '/')) }}" alt="{{ libro.titulo }}">
+                            {% else %}
+                                <img src="{{ url_for('static', filename='default.png') }}" alt="Imagen no disponible">
+                            {% endif %}
+                        </a>
+                        <p>{{ libro.titulo }} por {{ libro.autor }}</p>
+                        {% if current_user.is_authenticated and current_user.rol == 'admin' %}
+                            <div class="admin-actions">
+                                <a href="/books/edit/{{ libro.idbook }}">Editar</a> |
+                                <a href="/books/delete/{{ libro.idbook }}" onclick="return confirm('¿Estás seguro de que deseas eliminar este libro?');">Eliminar</a>
+                            </div>
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+        </main>
+    </div>
+    <footer>
+        <p>© 2024 Sistema de Gestión de Biblioteca</p>
+    </footer>
+</body>
+</html>
